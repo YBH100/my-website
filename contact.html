@@ -1,78 +1,123 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>联系我 | 奕博浩</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/components.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我 | 奕博浩</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
-  <header class="header">
     <!-- 导航栏 -->
-  </header>
-
-  <main class="container page-container">
-    <h1 class="page-title">联系我</h1>
-    
-    <div class="contact-container">
-      <div class="contact-info">
-        <h2>联系方式</h2>
-        <p>欢迎随时与我联系！无论是项目合作、技术交流还是单纯聊天，我都会尽快回复。</p>
-        
-        <div class="contact-details">
-          <div class="contact-item">
-            <h3>电子邮箱</h3>
-            <p>yibohao1234@outlook.com</p>
-            <a href="mailto:yibohao1234@outlook.com" class="btn-link">发送邮件</a>
-          </div>
-          
-          <div class="contact-item">
-            <h3>GitHub</h3>
-            <p>查看我的代码仓库和项目</p>
-            <a href="https://github.com/YBH100" class="btn-link" target="_blank">访问GitHub</a>
-          </div>
-          
-          <div class="contact-item">
-            <h3>学校</h3>
-            <p>苏州工业园区景城学校</p>
-          </div>
+    <header id="header">
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            奕博浩
         </div>
-      </div>
-      
-      <div class="contact-form">
-        <h2>发送消息</h2>
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="name">姓名</label>
-            <input type="text" id="name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">邮箱</label>
-            <input type="email" id="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">主题</label>
-            <input type="text" id="subject">
-          </div>
-          
-          <div class="form-group">
-            <label for="message">消息</label>
-            <textarea id="message" rows="5" required></textarea>
-          </div>
-          
-          <button type="submit" class="btn">发送消息</button>
-        </form>
-      </div>
-    </div>
-  </main>
+        <nav>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="about.html"><i class="fas fa-user"></i> 关于我</a>
+                <a href="projects.html"><i class="fas fa-project-diagram"></i> 项目</a>
+                <a href="contact.html" class="active"><i class="fas fa-envelope"></i> 联系</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
 
-  <footer class="footer">
+    <!-- 联系部分 -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>联系我</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>电子邮件</h4>
+                        <a href="mailto:yibohao1234@outlook.com">yibohao1234@outlook.com</a>
+                        <p>工作日24小时内回复</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method"> 
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/YBH100" target="_blank">github.com/YBH100</a>
+                        <p>查看我的开源项目</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>学校</h4>
+                        <p>苏州工业园区景城学校</p>
+                        <p>九年级创新班</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>位置</h4>
+                        <p>中国江苏省苏州市</p>
+                        <p>苏州工业园区</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass-card">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> 姓名</label>
+                        <input type="text" id="name" required placeholder="您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> 电子邮件</label>
+                        <input type="email" id="email" required placeholder="您的电子邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject"><i class="fas fa-tag"></i> 主题</label>
+                        <input type="text" id="subject" placeholder="消息主题">
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> 消息</label>
+                        <textarea id="message" required placeholder="请输入您的消息..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">
+                        <i class="fas fa-paper-plane"></i> 发送消息
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- 页脚 -->
-  </footer>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">奕博浩</div>
+            <div class="copyright">
+                &copy; 2025 奕博浩. 保留所有权利 | 苏州工业园区景城学校
+            </div>
+        </div>
+    </footer>
 
-  <script src="scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
