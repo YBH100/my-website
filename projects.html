@@ -1,91 +1,113 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的项目 | 奕博浩</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/components.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的项目 | 奕博浩</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
-  <header class="header">
     <!-- 导航栏 -->
-  </header>
+    <header id="header">
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            奕博浩
+        </div>
+        <nav>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="about.html"><i class="fas fa-user"></i> 关于我</a>
+                <a href="projects.html" class="active"><i class="fas fa-project-diagram"></i> 项目</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> 联系</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
 
-  <main class="container page-container">
-    <h1 class="page-title">我的项目</h1>
-    
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">全部</button>
-      <button class="filter-btn" data-filter="web">网站开发</button>
-      <button class="filter-btn" data-filter="game">小游戏</button>
-      <button class="filter-btn" data-filter="app">应用工具</button>
-    </div>
-    
-    <div class="projects-grid">
-      <!-- 项目1 -->
-      <div class="project-card" data-category="web">
-        <div class="project-image"></div>
-        <div class="project-content">
-          <h3>个人网站设计与部署</h3>
-          <p>从设计到部署的完整网站开发流程，使用现代前端技术实现</p>
-          <div class="project-tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-          <a href="#" class="btn">查看详情</a>
+    <!-- 项目部分 -->
+    <section id="projects">
+        <div class="section-title">
+            <h2>精选项目</h2>
         </div>
-      </div>
-      
-      <!-- 项目2 -->
-      <div class="project-card" data-category="game">
-        <div class="project-image"></div>
-        <div class="project-content">
-          <h3>数独游戏</h3>
-          <p>基于JavaScript开发的数独游戏，包含难度选择和自动解题功能</p>
-          <div class="project-tags">
-            <span>JavaScript</span>
-            <span>算法</span>
-          </div>
-          <a href="#" class="btn">在线试玩</a>
+        <div class="projects-grid">
+            <div class="project-card glass-card">
+                <div class="project-image">
+                    <i class="fas fa-globe-asia"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-laptop-code"></i> 个人作品集网站</h3>
+                    <p>使用现代HTML5/CSS3技术构建的响应式个人网站，展示项目成果和技术能力，采用Vercel部署。</p>
+                    <div class="project-tags">
+                        <span class="tag"><i class="fab fa-html5"></i> HTML/CSS</span>
+                        <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="tag"><i class="fas fa-mobile-alt"></i> 响应式</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            查看详情 <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card glass-card">
+                <div class="project-image">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-puzzle-piece"></i> JavaScript数独游戏</h3>
+                    <p>基于JavaScript开发的交互式数独游戏，包含难度选择和自动解题功能，使用回溯算法实现。</p>
+                    <div class="project-tags">
+                        <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="tag"><i class="fas fa-brain"></i> 算法</span>
+                        <span class="tag"><i class="fas fa-gamepad"></i> 游戏</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            在线试玩 <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card glass-card">
+                <div class="project-image">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="project-content">
+                    <h3><i class="fas fa-calendar-check"></i> 学习计划管理器</h3>
+                    <p>帮助中学生规划学习任务和时间管理的Web应用，使用LocalStorage存储数据，支持任务提醒功能。</p>
+                    <div class="project-tags">
+                        <span class="tag"><i class="fas fa-layer-group"></i> Web应用</span>
+                        <span class="tag"><i class="fas fa-database"></i> LocalStorage</span>
+                        <span class="tag"><i class="fas fa-paint-brush"></i> UI设计</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            使用应用 <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- 项目3 -->
-      <div class="project-card" data-category="app">
-        <div class="project-image"></div>
-        <div class="project-content">
-          <h3>学习计划管理器</h3>
-          <p>帮助规划学习任务和时间管理的网页应用</p>
-          <div class="project-tags">
-            <span>JavaScript</span>
-            <span>LocalStorage</span>
-          </div>
-          <a href="#" class="btn">使用应用</a>
-        </div>
-      </div>
-      
-      <!-- 项目4 -->
-      <div class="project-card" data-category="web">
-        <div class="project-image"></div>
-        <div class="project-content">
-          <h3>校园活动网站</h3>
-          <p>为学校活动设计的响应式网站，适配各种设备</p>
-          <div class="project-tags">
-            <span>响应式设计</span>
-            <span>CSS Grid</span>
-          </div>
-          <a href="#" class="btn">访问网站</a>
-        </div>
-      </div>
-    </div>
-  </main>
+    </section>
 
-  <footer class="footer">
     <!-- 页脚 -->
-  </footer>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">奕博浩</div>
+            <div class="copyright">
+                &copy; 2025 奕博浩. 保留所有权利 | 苏州工业园区景城学校
+            </div>
+        </div>
+    </footer>
 
-  <script src="scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
