@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的项目 | 奕博浩</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+  <header class="header">
+    <!-- 导航栏 -->
+  </header>
+
+  <main class="container page-container">
+    <h1 class="page-title">我的项目</h1>
+    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="web">网站开发</button>
+      <button class="filter-btn" data-filter="game">小游戏</button>
+      <button class="filter-btn" data-filter="app">应用工具</button>
+    </div>
+    
+    <div class="projects-grid">
+      <!-- 项目1 -->
+      <div class="project-card" data-category="web">
+        <div class="project-image"></div>
+        <div class="project-content">
+          <h3>个人网站设计与部署</h3>
+          <p>从设计到部署的完整网站开发流程，使用现代前端技术实现</p>
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <a href="#" class="btn">查看详情</a>
+        </div>
+      </div>
+      
+      <!-- 项目2 -->
+      <div class="project-card" data-category="game">
+        <div class="project-image"></div>
+        <div class="project-content">
+          <h3>数独游戏</h3>
+          <p>基于JavaScript开发的数独游戏，包含难度选择和自动解题功能</p>
+          <div class="project-tags">
+            <span>JavaScript</span>
+            <span>算法</span>
+          </div>
+          <a href="#" class="btn">在线试玩</a>
+        </div>
+      </div>
+      
+      <!-- 项目3 -->
+      <div class="project-card" data-category="app">
+        <div class="project-image"></div>
+        <div class="project-content">
+          <h3>学习计划管理器</h3>
+          <p>帮助规划学习任务和时间管理的网页应用</p>
+          <div class="project-tags">
+            <span>JavaScript</span>
+            <span>LocalStorage</span>
+          </div>
+          <a href="#" class="btn">使用应用</a>
+        </div>
+      </div>
+      
+      <!-- 项目4 -->
+      <div class="project-card" data-category="web">
+        <div class="project-image"></div>
+        <div class="project-content">
+          <h3>校园活动网站</h3>
+          <p>为学校活动设计的响应式网站，适配各种设备</p>
+          <div class="project-tags">
+            <span>响应式设计</span>
+            <span>CSS Grid</span>
+          </div>
+          <a href="#" class="btn">访问网站</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <!-- 页脚 -->
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
