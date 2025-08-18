@@ -1,72 +1,91 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关于我 | 奕博浩</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/components.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 | 奕博浩</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
-  <header class="header">
-    <!-- 导航栏与index.html相同 -->
-  </header>
-
-  <main class="container page-container">
-    <h1 class="page-title">关于我</h1>
-    
-    <section class="about-section">
-      <div class="about-content">
-        <h2>个人简介</h2>
-        <p>你好！我是奕博浩，目前就读于苏州工业园区景城学校九年级。从小我就对科技充满热情，特别是编程和网站开发领域。</p>
-        <p>我喜欢将创意转化为现实，通过代码解决实际问题。在我的学习旅程中，我掌握了HTML、CSS和JavaScript等前端技术，并正在学习Python等后端语言。</p>
-        
-        <h2>我的技能</h2>
-        <div class="skills">
-          <div class="skill">HTML5</div>
-          <div class="skill">CSS3</div>
-          <div class="skill">JavaScript</div>
-          <div class="skill">Python</div>
-          <div class="skill">响应式设计</div>
+    <!-- 导航栏 -->
+    <header id="header">
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            奕博浩
         </div>
-      </div>
-      
-      <div class="about-image">
-        <!-- 这里可以放你的照片 -->
-        <div class="placeholder-image"></div>
-      </div>
+        <nav>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="about.html" class="active"><i class="fas fa-user"></i> 关于我</a>
+                <a href="projects.html"><i class="fas fa-project-diagram"></i> 项目</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> 联系</a>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 关于部分 -->
+    <section id="about">
+        <div class="section-title">
+            <h2>关于我</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>追求技术与美学的平衡</h3>
+                <p>现就读于苏州工业园区西安交通大学苏州附属中学，自2021年开始接触编程，从Python基础入门，逐步扩展到Web开发领域。我享受解决问题的过程，特别是在将复杂想法转化为简洁代码的过程中获得的成就感。</p>
+                <p>除了编程，我还热衷于UI/UX设计，相信优秀的产品需要在功能与视觉体验之间取得平衡。在课余时间，我喜欢研究新技术趋势，参加编程社区活动，以及探索苏州的历史文化。</p>
+                
+                <div class="about-stats">
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-code"></i>
+                        <h4>1500+</h4>
+                        <p>代码小时数</p>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-project-diagram"></i>
+                        <h4>8</h4>
+                        <p>完成项目</p>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-book-open"></i>
+                        <h4>12</h4>
+                        <p>在线课程</p>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-coffee"></i>
+                        <h4>∞</h4>
+                        <p>无限热情</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <div class="image-container">
+                    <div class="image-frame"></div>
+                    <div class="glass-card image-placeholder">
+                        <div class="floating-text">奕博浩</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section class="timeline">
-      <h2>学习历程</h2>
-      <div class="timeline-item">
-        <div class="timeline-date">2023</div>
-        <div class="timeline-content">
-          <h3>开始学习编程</h3>
-          <p>通过在线课程开始接触Python编程，完成了第一个小程序</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-content">
-          <h3>Web开发入门</h3>
-          <p>学习HTML、CSS和JavaScript，创建了第一个个人网页</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-content">
-          <h3>项目实践</h3>
-          <p>开始参与实际项目开发，包括小游戏和网页应用</p>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <!-- 与index.html相同的页脚 -->
-  </footer>
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">奕博浩</div>
+            <div class="copyright">
+                &copy; 2025 奕博浩. 保留所有权利 | 苏州工业园区景城学校
+            </div>
+        </div>
+    </footer>
 
-  <script src="scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
