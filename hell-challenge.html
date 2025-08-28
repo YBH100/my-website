@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地狱闯关游戏 - 奕博浩</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .game-container {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+            border: 2px solid #e50914;
+            position: relative;
+        }
+        
+        .game-header {
+            background: linear-gradient(90deg, #8b0000, #b22222, #8b0000);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ffd700;
+        }
+        
+        .game-title {
+            font-size: 2.8rem;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .game-subtitle {
+            font-size: 1.2rem;
+            color: #ffa07a;
+        }
+        
+        .game-content {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .game-info {
+            flex: 1;
+            background: rgba(25, 25, 35, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #444;
+        }
+        
+        .difficulty-section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: #ff6347;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .difficulty-levels {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .difficulty-btn {
+            flex: 1;
+            padding: 15px 10px;
+            border-radius: 10px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .difficulty-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .normal {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+        
+        .hard {
+            background: linear-gradient(135deg, #FF9800, #EF6C00);
+            color: white;
+        }
+        
+        .hell {
+            background: linear-gradient(135deg, #f44336, #b71c1c);
+            color: white;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .control-item {
+            background: rgba(40, 40, 55, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #555;
+        }
+        
+        .control-key {
+            background: #333;
+            color: #ffd700;
+            padding: 8px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: bold;
+            border: 1px solid #ffd700;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .stat-card {
+            background: rgba(60, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #ff6347;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            color: #ffd700;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .game-area {
+            flex: 2;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #ff6347;
+            background: #1a0a0a;
+            min-height: 500px;
+        }
+        
+        #gameCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .game-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .overlay-title {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+        
+        .overlay-subtitle {
+            font-size: 1.5rem;
+            color: #ff6347;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .start-btn {
+            background: linear-gradient(135deg, #ff5722, #e53935);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(229, 57, 53, 0.4);
+        }
+        
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 7px 20px rgba(229, 57, 53, 0.6);
+        }
+        
+        .game-footer {
+            background: #111;
+            padding: 15px;
+            text-align: center;
+            border-top: 2px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .score-display {
+            font-size: 1.2rem;
+        }
+        
+        .score-value {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        
+        .lives {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .life {
+            color: #ff5252;
+            font-size: 1.5rem;
+        }
+        
+        .level-display {
+            background: #8b0000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .game-content {
+                flex-direction: column;
+            }
+            
+            .game-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">地狱闯关</h1>
+            <p class="game-subtitle">挑战极限，征服地狱深处！</p>
+        </div>
+        
+        <div class="game-content">
+            <div class="game-info">
+                <div class="difficulty-section">
+                    <h2 class="section-title"><i class="fas fa-skull"></i> 选择难度</h2>
+                    <div class="difficulty-levels">
+                        <button class="difficulty-btn normal">
+                            <i class="fas fa-angel"></i>
+                            <span>普通模式</span>
+                        </button>
+                        <button class="difficulty-btn hard">
+                            <i class="fas fa-dragon"></i>
+                            <span>困难模式</span>
+                        </button>
+                        <button class="difficulty-btn hell">
+                            <i class="fas fa-fire"></i>
+                            <span>地狱模式</span>
+                        </button>
+                    </div>
+                    <p>地狱模式：敌人速度+50%，陷阱数量加倍，生命值减少</p>
+                </div>
+                
+                <div class="controls-section">
+                    <h2 class="section-title"><i class="fas fa-gamepad"></i> 游戏控制</h2>
+                    <div class="controls">
+                        <div class="control-item">
+                            <i class="fas fa-arrow-left"></i> 向左移动
+                            <div class="control-key">←</div>
+                        </div>
+                        <div class="control-item">
+                            <i class="fas fa-arrow-right"></i> 向右移动
+                            <div class="control-key">→</div>
+                        </div>
+                        <div class="control-item">
+                            <i class="fas fa-arrow-up"></i> 跳跃
+                            <div class="control-key">空格</div>
+                        </div>
+                        <div class="control-item">
+                            <i class="fas fa-running"></i> 冲刺
+                            <div class="control-key">SHIFT</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h2 class="section-title"><i class="fas fa-chart-bar"></i> 游戏数据</h2>
+                    <div class="stats">
+                        <div class="stat-card">
+                            当前分数
+                            <div class="stat-value">0</div>
+                        </div>
+                        <div class="stat-card">
+                            最高记录
+                            <div class="stat-value">12,450</div>
+                        </div>
+                        <div class="stat-card">
+                            完成关卡
+                            <div class="stat-value">3/10</div>
+                        </div>
+                        <div class="stat-card">
+                            死亡次数
+                            <div class="stat-value">27</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-area">
+                <canvas id="gameCanvas"></canvas>
+                <div class="game-overlay" id="startOverlay">
+                    <h2 class="overlay-title">地狱闯关</h2>
+                    <p class="overlay-subtitle">穿越地狱的烈焰，躲避恶魔的追击，收集钥匙打开地狱之门！</p>
+                    <button class="start-btn" id="startBtn">开始地狱挑战</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-footer">
+            <div class="score-display">分数: <span class="score-value">0</span></div>
+            <div class="lives">
+                <span class="life"><i class="fas fa-heart"></i></span>
+                <span class="life"><i class="fas fa-heart"></i></span>
+                <span class="life"><i class="fas fa-heart"></i></span>
+            </div>
+            <div class="level-display">地狱关卡: <span>1</span></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            const startOverlay = document.getElementById('startOverlay');
+            const startBtn = document.getElementById('startBtn');
+            const scoreValue = document.querySelector('.score-value');
+            const levelDisplay = document.querySelector('.level-display span');
+            
+            // 设置Canvas尺寸
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+                drawStartScreen();
+            }
+            
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            
+            // 游戏状态
+            let gameState = {
+                running: false,
+                score: 0,
+                level: 1,
+                lives: 3,
+                difficulty: 'normal'
+            };
+            
+            // 游戏元素
+            const player = {
+                x: 100,
+                y: canvas.height - 150,
+                width: 40,
+                height: 60,
+                color: '#4a86e8',
+                speed: 5,
+                jumping: false,
+                jumpPower: 15,
+                velocityY: 0
+            };
+            
+            // 平台
+            const platforms = [
+                {x: 0, y: canvas.height - 50, width: canvas.width, height: 50, color: '#8B4513'},
+                {x: 300, y: canvas.height - 200, width: 200, height: 30, color: '#8B4513'},
+                {x: 600, y: canvas.height - 300, width: 150, height: 30, color: '#8B4513'},
+                {x: 200, y: canvas.height - 350, width: 150, height: 30, color: '#8B4513'}
+            ];
+            
+            // 敌人
+            const enemies = [
+                {x: 400, y: canvas.height - 100, width: 40, height: 40, color: '#e74c3c', speed: 2},
+                {x: 700, y: canvas.height - 250, width: 40, height: 40, color: '#e74c3c', speed: 2}
+            ];
+            
+            // 收集品
+            const collectibles = [
+                {x: 350, y: canvas.height - 230, width: 20, height: 20, color: '#ffd700', collected: false},
+                {x: 650, y: canvas.height - 330, width: 20, height: 20, color: '#ffd700', collected: false},
+                {x: 250, y: canvas.height - 380, width: 20, height: 20, color: '#ffd700', collected: false}
+            ];
+            
+            // 地狱之门
+            const hellGate = {
+                x: canvas.width - 150,
+                y: canvas.height - 250,
+                width: 80,
+                height: 120,
+                color: '#e50914'
+            };
+            
+            // 绘制开始界面
+            function drawStartScreen() {
+                ctx.fillStyle = '#1a0a0a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // 绘制标题
+                ctx.font = 'bold 48px Arial';
+                ctx.fillStyle = '#ffd700';
+                ctx.textAlign = 'center';
+                ctx.fillText('地狱闯关', canvas.width/2, 150);
+                
+                // 绘制副标题
+                ctx.font = '24px Arial';
+                ctx.fillStyle = '#ff6347';
+                ctx.fillText('挑战极限，征服地狱深处！', canvas.width/2, 200);
+                
+                // 绘制恶魔
+                ctx.fillStyle = '#e74c3c';
+                ctx.beginPath();
+                ctx.arc(canvas.width/2, 300, 50, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = '#000';
+                ctx.beginPath();
+                ctx.arc(canvas.width/2 - 20, 290, 10, 0, Math.PI * 2);
+                ctx.arc(canvas.width/2 + 20, 290, 10, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(canvas.width/2, 330, 20, 0, Math.PI);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // 绘制提示
+                ctx.font = '20px Arial';
+                ctx.fillStyle = '#fff';
+                ctx.fillText('点击"开始地狱挑战"按钮开始游戏', canvas.width/2, 450);
+            }
+            
+            // 开始游戏
+            startBtn.addEventListener('click', () => {
+                startOverlay.classList.add('hidden');
+                gameState.running = true;
+                gameLoop();
+            });
+            
+            // 键盘控制
+            const keys = {};
+            
+            window.addEventListener('keydown', (e) => {
+                keys[e.key] = true;
+            });
+            
+            window.addEventListener('keyup', (e) => {
+                keys[e.key] = false;
+            });
+            
+            // 游戏主循环
+            function gameLoop() {
+                if (!gameState.running) return;
+                
+                // 清空画布
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // 更新游戏状态
+                updateGame();
+                
+                // 绘制游戏元素
+                drawGame();
+                
+                // 继续游戏循环
+                requestAnimationFrame(gameLoop);
+            }
+            
+            // 更新游戏状态
+            function updateGame() {
+                // 玩家移动
+                if (keys['ArrowLeft']) {
+                    player.x -= player.speed;
+                    if (player.x < 0) player.x = 0;
+                }
+                
+                if (keys['ArrowRight']) {
+                    player.x += player.speed;
+                    if (player.x + player.width > canvas.width) {
+                        player.x = canvas.width - player.width;
+                    }
+                }
+                
+                // 玩家跳跃
+                if (keys[' '] && !player.jumping) {
+                    player.jumping = true;
+                    player.velocityY = -player.jumpPower;
+                }
+                
+                // 应用重力
+                player.velocityY += 0.8;
+                player.y += player.velocityY;
+                
+                // 检测平台碰撞
+                player.jumping = true;
+                platforms.forEach(platform => {
+                    if (
+                        player.x < platform.x + platform.width &&
+                        player.x + player.width > platform.x &&
+                        player.y + player.height <= platform.y &&
+                        player.y + player.height + player.velocityY >= platform.y
+                    ) {
+                        player.jumping = false;
+                        player.velocityY = 0;
+                        player.y = platform.y - player.height;
+                    }
+                });
+                
+                // 边界检查
+                if (player.y > canvas.height) {
+                    player.y = canvas.height - player.height;
+                    player.jumping = false;
+                    player.velocityY = 0;
+                }
+                
+                // 移动敌人
+                enemies.forEach(enemy => {
+                    enemy.x += enemy.speed;
+                    
+                    // 敌人边界检测
+                    if (enemy.x <= 0 || enemy.x + enemy.width >= canvas.width) {
+                        enemy.speed *= -1;
+                    }
+                    
+                    // 检测敌人碰撞
+                    if (
+                        player.x < enemy.x + enemy.width &&
+                        player.x + player.width > enemy.x &&
+                        player.y < enemy.y + enemy.height &&
+                        player.y + player.height > enemy.y
+                    ) {
+                        // 玩家死亡
+                        gameState.lives--;
+                        updateLives();
+                        resetPlayer();
+                        
+                        if (gameState.lives <= 0) {
+                            gameOver();
+                        }
+                    }
+                });
+                
+                // 检测收集品碰撞
+                collectibles.forEach((collectible, index) => {
+                    if (!collectible.collected &&
+                        player.x < collectible.x + collectible.width &&
+                        player.x + player.width > collectible.x &&
+                        player.y < collectible.y + collectible.height &&
+                        player.y + player.height > collectible.y
+                    ) {
+                        collectible.collected = true;
+                        gameState.score += 500;
+                        scoreValue.textContent = gameState.score;
+                    }
+                });
+                
+                // 检测地狱之门碰撞
+                if (
+                    player.x < hellGate.x + hellGate.width &&
+                    player.x + player.width > hellGate.x &&
+                    player.y < hellGate.y + hellGate.height &&
+                    player.y + player.height > hellGate.y
+                ) {
+                    // 玩家通关
+                    gameState.level++;
+                    levelDisplay.textContent = gameState.level;
+                    resetPlayer();
+                    resetCollectibles();
+                }
+            }
+            
+            // 绘制游戏
+            function drawGame() {
+                // 绘制背景
+                ctx.fillStyle = '#1a0a0a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // 绘制地狱背景元素
+                drawBackground();
+                
+                // 绘制平台
+                platforms.forEach(platform => {
+                    ctx.fillStyle = platform.color;
+                    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+                });
+                
+                // 绘制地狱之门
+                ctx.fillStyle = hellGate.color;
+                ctx.fillRect(hellGate.x, hellGate.y, hellGate.width, hellGate.height);
+                
+                // 绘制门细节
+                ctx.fillStyle = '#ffd700';
+                ctx.beginPath();
+                ctx.arc(hellGate.x + hellGate.width/2, hellGate.y + 50, 20, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // 绘制收集品
+                collectibles.forEach(collectible => {
+                    if (!collectible.collected) {
+                        ctx.fillStyle = collectible.color;
+                        ctx.beginPath();
+                        ctx.arc(
+                            collectible.x + collectible.width/2,
+                            collectible.y + collectible.height/2,
+                            collectible.width/2,
+                            0,
+                            Math.PI * 2
+                        );
+                        ctx.fill();
+                    }
+                });
+                
+                // 绘制敌人
+                enemies.forEach(enemy => {
+                    ctx.fillStyle = enemy.color;
+                    ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+                    
+                    // 绘制恶魔眼睛
+                    ctx.fillStyle = '#000';
+                    ctx.beginPath();
+                    ctx.arc(enemy.x + 15, enemy.y + 15, 5, 0, Math.PI * 2);
+                    ctx.arc(enemy.x + 25, enemy.y + 15, 5, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // 绘制恶魔嘴
+                    ctx.beginPath();
+                    ctx.arc(enemy.x + 20, enemy.y + 25, 8, 0, Math.PI);
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                });
+                
+                // 绘制玩家
+                ctx.fillStyle = player.color;
+                ctx.fillRect(player.x, player.y, player.width, player.height);
+                
+                // 绘制玩家细节
+                ctx.fillStyle = '#fff';
+                ctx.beginPath();
+                ctx.arc(player.x + 15, player.y + 20, 8, 0, Math.PI * 2);
+                ctx.arc(player.x + 25, player.y + 20, 8, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = '#000';
+                ctx.beginPath();
+                ctx.arc(player.x + 15, player.y + 20, 4, 0, Math.PI * 2);
+                ctx.arc(player.x + 25, player.y + 20, 4, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(player.x + 20, player.y + 35, 6, 0, Math.PI);
+                ctx.stroke();
+            }
+            
+            // 绘制背景元素
+            function drawBackground() {
+                // 绘制地狱熔岩
+                ctx.fillStyle = '#ff4500';
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height - 20);
+                for (let i = 0; i < canvas.width; i += 20) {
+                    ctx.lineTo(i, canvas.height - 20 + Math.random() * 30 - 15);
+                }
+                ctx.lineTo(canvas.width, canvas.height - 20);
+                ctx.lineTo(canvas.width, canvas.height);
+                ctx.lineTo(0, canvas.height);
+                ctx.closePath();
+                ctx.fill();
+                
+                // 绘制熔岩气泡
+                ctx.fillStyle = '#ff8c00';
+                for (let i = 0; i < 20; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = canvas.height - 15 + Math.random() * 10;
+                    const radius = Math.random() * 5 + 2;
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // 绘制火焰
+                ctx.fillStyle = '#ff5722';
+                for (let i = 0; i < 10; i++) {
+                    const x = Math.random() * canvas.width;
+                    const height = Math.random() * 30 + 20;
+                    ctx.beginPath();
+                    ctx.moveTo(x, canvas.height - 20);
+                    ctx.bezierCurveTo(
+                        x - 10, canvas.height - 20 - height/2,
+                        x + 10, canvas.height - 20 - height,
+                        x, canvas.height - 20 - height
+                    );
+                    ctx.bezierCurveTo(
+                        x + 10, canvas.height - 20 - height,
+                        x - 10, canvas.height - 20 - height/2,
+                        x, canvas.height - 20
+                    );
+                    ctx.fill();
+                }
+            }
+            
+            // 重置玩家位置
+            function resetPlayer() {
+                player.x = 100;
+                player.y = canvas.height - 150;
+                player.velocityY = 0;
+                player.jumping = false;
+            }
+            
+            // 重置收集品
+            function resetCollectibles() {
+                collectibles.forEach(collectible => {
+                    collectible.collected = false;
+                });
+            }
+            
+            // 更新生命显示
+            function updateLives() {
+                const livesContainer = document.querySelector('.lives');
+                livesContainer.innerHTML = '';
+                for (let i = 0; i < gameState.lives; i++) {
+                    const life = document.createElement('span');
+                    life.className = 'life';
+                    life.innerHTML = '<i class="fas fa-heart"></i>';
+                    livesContainer.appendChild(life);
+                }
+            }
+            
+            // 游戏结束
+            function gameOver() {
+                gameState.running = false;
+                
+                // 显示游戏结束信息
+                const overlay = document.createElement('div');
+                overlay.className = 'game-overlay';
+                overlay.innerHTML = `
+                    <h2 class="overlay-title">游戏结束</h2>
+                    <p class="overlay-subtitle">你在地狱中失败了！你的最终分数: ${gameState.score}</p>
+                    <button class="start-btn" id="restartBtn">重新挑战地狱</button>
+                `;
+                
+                document.querySelector('.game-area').appendChild(overlay);
+                
+                // 重新开始游戏
+                document.getElementById('restartBtn').addEventListener('click', () => {
+                    overlay.remove();
+                    gameState.running = true;
+                    gameState.score = 0;
+                    gameState.lives = 3;
+                    gameState.level = 1;
+                    scoreValue.textContent = '0';
+                    levelDisplay.textContent = '1';
+                    updateLives();
+                    resetPlayer();
+                    resetCollectibles();
+                    gameLoop();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
