@@ -1,21 +1,22 @@
-// 登录系统（简单示例）
+const loginForm = document.getElementById('loginForm');
+const loginMsg = document.getElementById('loginMsg');
+
 const users = {
-    'YiBoho': 'admin123'
+    'YiBoho': '123456'  // 管理员账号
 };
 
-document.getElementById('loginForm')?.addEventListener('submit', function(e){
+loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const msg = document.getElementById('loginMsg');
 
-    if(users[username] && users[username] === password){
-        msg.innerText = '登录成功！';
-        msg.style.color = 'lime';
+    if (users[username] && users[username] === password) {
+        loginMsg.style.color = 'green';
+        loginMsg.textContent = '登录成功！';
         localStorage.setItem('loggedUser', username);
-        setTimeout(()=>location.reload(), 1000);
+        loginModal.style.display = 'none';
     } else {
-        msg.innerText = '用户名或密码错误';
-        msg.style.color = 'red';
+        loginMsg.style.color = 'red';
+        loginMsg.textContent = '用户名或密码错误！';
     }
 });
