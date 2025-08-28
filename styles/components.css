@@ -1,399 +1,84 @@
-/* 关于部分 */
-.about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+/* Hero 区域 */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: transparent;
 }
 
-@media (max-width: 992px) {
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-image {
-        order: -1;
-        height: 400px;
-        margin-bottom: 50px;
-    }
+.hero h1 {
+  font-size: 3rem;
 }
 
-.about-text h3 {
-    font-size: 2rem;
-    margin-bottom: 25px;
-    color: white;
+.cta-buttons {
+  margin-top: 1.5rem;
 }
 
-.about-text p {
-    margin-bottom: 25px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1.1rem;
+.cta-button {
+  background: #00e5ff;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  margin: 0 0.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    margin-top: 40px;
+.cta-button.secondary {
+  background: transparent;
+  border: 1px solid #00e5ff;
+  color: #00e5ff;
 }
 
-.stat-card {
-    padding: 30px;
-    text-align: center;
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
+.cta-button:hover {
+  background: #00bcd4;
 }
 
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(to right, var(--primary), var(--accent));
+/* 模态框 */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.stat-card i {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--accent);
+.modal.hidden {
+  display: none;
 }
 
-.stat-card h4 {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-    background: linear-gradient(45deg, #fff, #a5b4fc);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 700;
+.modal-content {
+  background: #1c1c1c;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
 }
 
-.about-image {
-    position: relative;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.modal-content input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 6px;
 }
 
-.image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.modal-content button {
+  background: #00e5ff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
 }
 
-.image-frame {
-    width: 320px;
-    height: 320px;
-    border: 3px solid var(--accent);
-    border-radius: 50%;
-    position: absolute;
-    animation: rotate 20s linear infinite;
-}
-
-.image-placeholder {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    z-index: 2;
-    overflow: hidden;
-    position: relative;
-}
-
-.image-placeholder::before {
-    content: '奕博浩';
-    position: absolute;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.1);
-    transform: rotate(-30deg);
-    white-space: nowrap;
-}
-
-/* 技能部分 */
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
-}
-
-.skill-category {
-    padding: 35px;
-}
-
-.skill-category h3 {
-    font-size: 1.6rem;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: white;
-}
-
-.skill-category h3 i {
-    color: var(--accent);
-    font-size: 1.4rem;
-}
-
-.skill-item {
-    margin-bottom: 30px;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-}
-
-.skill-bar {
-    height: 10px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    border-radius: 5px;
-    position: relative;
-}
-
-.skill-progress:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: progressShine 2s infinite;
-}
-
-/* 项目部分 */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 45px;
-}
-
-.project-card {
-    height: 100%;
-    transition: var(--transition);
-    transform: translateY(0);
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-.project-image {
-    height: 240px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.project-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,0 100,100" style="fill:rgba(0,0,0,0.1);"/></svg>');
-    background-size: 100% 100%;
-}
-
-.project-content {
-    padding: 35px;
-}
-
-.project-content h3 {
-    font-size: 1.7rem;
-    margin-bottom: 15px;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.project-content h3 i {
-    color: var(--accent);
-    font-size: 1.4rem;
-}
-
-.project-content p {
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.tag {
-    background: rgba(106, 17, 203, 0.2);
-    color: var(--accent);
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.tag i {
-    font-size: 0.8rem;
-}
-
-.project-links {
-    display: flex;
-    gap: 15px;
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    padding: 8px 20px;
-    border-radius: 50px;
-    background: rgba(106, 17, 203, 0.1);
-    border: 1px solid rgba(255, 94, 98, 0.2);
-}
-
-.project-link:hover {
-    color: white;
-    gap: 12px;
-    background: rgba(106, 17, 203, 0.3);
-    border-color: var(--accent);
-}
-
-/* 联系部分 */
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-}
-
-@media (max-width: 992px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-}
-
-.contact-method {
-    display: flex;
-    align-items: flex-start;
-    gap: 25px;
-}
-
-.contact-icon {
-    width: 65px;
-    height: 65px;
-    background: rgba(106, 17, 203, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.7rem;
-    color: var(--accent);
-    flex-shrink: 0;
-}
-
-.contact-details h4 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.contact-details p, .contact-details a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    transition: var(--transition);
-    font-size: 1.1rem;
-}
-
-.contact-details a:hover {
-    color: var(--accent);
-}
-
-.contact-form .form-group {
-    margin-bottom: 30px;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 12px;
-    color: white;
-    font-size: 1.1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: white;
-    font-family: inherit;
-    font-size: 1.05rem;
-    transition: var(--transition);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: rgba(106, 17, 203, 0.1);
-    box-shadow: 0 0 0 3px rgba(255, 94, 98, 0.1);
-}
-
-.contact-form textarea {
-    min-height: 160px;
-    resize: vertical;
-}
-
-/* 动画 */
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes progressShine {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  cursor: pointer;
 }
