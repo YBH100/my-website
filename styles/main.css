@@ -1,47 +1,178 @@
-/* 全局样式 */
-body {
-  margin: 0;
-  font-family: 'Noto Sans SC', 'Space Grotesk', sans-serif;
-  background: #0f0f0f;
-  color: #fff;
+/* 基本重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.8);
-  position: sticky;
-  top: 0;
+body, html {
+    height: 100%;
 }
 
-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+/* 背景 */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/background.jpg') no-repeat center center/cover;
+    z-index: -1;
+    filter: brightness(0.8);
 }
 
-nav a {
-  color: #fff;
-  margin-left: 1.5rem;
-  text-decoration: none;
-  transition: color 0.3s;
+/* 导航栏 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0,0,0,0.6);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-nav a.active, nav a:hover {
-  color: #00e5ff;
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
 }
 
-.container {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 1rem;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
 }
 
-footer {
-  text-align: center;
-  padding: 2rem;
-  background: #111;
-  margin-top: 2rem;
-  color: #888;
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #00ffff;
+}
+
+/* 主内容 */
+.home-main {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 2rem;
+}
+
+.home-main h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.home-main p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* 模态框 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: #111;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 300px;
+    color: #fff;
+    text-align: center;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.modal-content button {
+    padding: 0.5rem 1rem;
+    background: #00ffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal-content button:hover {
+    background: #00cccc;
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* 关于我页面 */
+.about-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.about-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-container p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* 人生中重要的人 */
+.important-people {
+    background: rgba(0,255,255,0.05);
+    padding: 1rem;
+    border-left: 4px solid #00ffff;
+    margin-top: 1rem;
+}
+
+.important-people h3 {
+    color: #00ffff;
+    margin-bottom: 0.5rem;
+}
+
+/* 联系页面 */
+.contact-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    color: #333;
+}
+
+.contact-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-container p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
 }
