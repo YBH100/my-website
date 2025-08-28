@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关于我 | 奕博浩</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/components.css">
-  <script defer src="scripts/auth.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="scripts/about.js"></script>
 </head>
 <body>
-  <header>
-    <div class="logo"><i class="fas fa-code"></i> 奕博浩</div>
-    <nav>
-      <a href="index.html">首页</a>
-      <a href="about.html" class="active">关于我</a>
-      <a href="contact.html">联系</a>
+    <nav class="navbar">
+        <div class="nav-logo">奕博浩</div>
+        <ul class="nav-links">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="about.html">关于我</a></li>
+            <li><a href="contact.html">联系方式</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <main class="container">
-    <h1>关于我</h1>
-    <p><strong>姓名：</strong> 奕博浩</p>
-    <p><strong>出生日期：</strong> 2010年3月16日</p>
-    <p><strong>学校：</strong> 苏州工业园区景城学校 九年级2班</p>
-    <p><strong>兴趣爱好：</strong> 编程 · 技术 · 设计</p>
+    <div class="about-container">
+        <h2>基本信息</h2>
+        <p>姓名：奕博浩</p>
+        <p>出生：2010.3.16</p>
+        <p>学校：景城学校九年级2班</p>
 
-    <section id="important-people" class="hidden">
-      <h2>人生中重要的人</h2>
-      <ul>
-      </ul>
-    </section>
-  </main>
+        <h2>人生中重要的人</h2>
+        <div class="important-people" id="importantPeople">
+            <h3>肖一萍（母亲）</h3>
+            <p>母亲是我人生中最重要的人之一，她非常善良且支持我。</p>
 
-  <footer>
-    <p>&copy; 2025 奕博浩. 保留所有权利</p>
-  </footer>
+            <h3>奕肖雯（妹妹）</h3>
+            <p>妹妹让我懂得责任与关爱，我们一起成长。</p>
+
+            <h3>青梅</h3>
+            <p>青梅是我童年里珍贵的朋友，回忆满满。</p>
+        </div>
+    </div>
 </body>
 </html>
