@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奕博浩 | 创意开发者</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="icon" href="favicon.ico">
+  <script defer src="scripts/auth.js"></script>
+  <script defer src="scripts/main.js"></script>
+</head>
+<body>
+  <!-- 粒子背景 -->
+  <canvas class="particles" id="particles"></canvas>
 
+  <!-- 导航栏 -->
+  <header id="header">
+    <div class="logo">
+      <i class="fas fa-code"></i>
+      奕博浩
+    </div>
+    <nav>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="active"><i class="fas fa-home"></i> 首页</a>
+        <a href="about.html"><i class="fas fa-user"></i> 关于我</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> 联系</a>
+        <a href="#" id="login-link"><i class="fas fa-sign-in-alt"></i> 登录</a>
+      </div>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- 首页区域 -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>用代码<span class="typing-text"></span></h1>
+      <p>你好，我是奕博浩，来自苏州的九年级学生。我热爱编程、设计和一切与技术相关的事物，通过代码将创意转化为现实。</p>
+      <div class="cta-buttons">
+        <a href="about.html" class="cta-button">
+          <i class="fas fa-user"></i> 关于我
+        </a>
+        <a href="contact.html" class="cta-button secondary">
+          <i class="fas fa-paper-plane"></i> 联系我
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 登录模态框 -->
+  <div class="modal hidden" id="login-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <h2>登录</h2>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="用户名" required>
+        <input type="password" id="password" placeholder="密码" required>
+        <button type="submit">登录</button>
+      </form>
+      <p id="login-status"></p>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">奕博浩</div>
+      <div class="footer-quote">"代码是21世纪的诗歌，每一行都是创造力的表达"</div>
+      <div class="social-links">
+        <a href="https://github.com" class="social-link" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://codepen.io" class="social-link" target="_blank">
+          <i class="fab fa-codepen"></i>
+        </a>
+        <a href="https://linkedin.com" class="social-link" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      <div class="copyright">
+        &copy; 2025 奕博浩. 保留所有权利 | 苏州工业园区景城学校
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
