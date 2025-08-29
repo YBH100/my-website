@@ -1,40 +1,101 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>奕博浩 - 粒子背景测试</title>
-  <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的网站首页</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* 粒子背景覆盖全屏 */
+        #tsparticles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* 内容在粒子之上 */
+        }
+
+        /* 页面内容居中示例 */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0d47a1; /* 粒子加载前背景色 */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-  <!-- 粒子背景容器 -->
-  <div id="tsparticles"></div>
+    <!-- 粒子容器 -->
+    <div id="tsparticles"></div>
 
-  <!-- 页面内容 -->
-  <div class="content">
-    <h1>Hello World!</h1>
-    <p>如果你能看到黑色背景 + 白色粒子，就说明 tsParticles 成功运行了。</p>
-  </div>
+    <!-- 页面内容 -->
+    <h1>欢迎来到我的网站</h1>
+    <p>这是一个带粒子背景的主页示例</p>
 
-  <!-- 本地粒子脚本 -->
-  <script src="particles.min.js"></script>
-  <script>
-    tsParticles.load("tsparticles", {
-      fullScreen: { enable: true, zIndex: -1 },
-      particles: {
-        number: { value: 80 },
-        color: { value: "#ffffff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: { min: 1, max: 3 } },
-        links: { enable: true, distance: 120, color: "#ffffff", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 2 }
-      },
-      interactivity: {
-        events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: true, mode: "push" } },
-        modes: { repulse: { distance: 100 }, push: { quantity: 4 } }
-      },
-      detectRetina: true
-    });
-  </script>
+    <!-- 引入本地 tsParticles -->
+    <script src="tsparticles.bundle.min.js"></script>
+
+    <!-- 初始化粒子效果 -->
+    <script>
+        tsParticles.load("tsparticles", {
+            background: {
+                color: { value: "#0d47a1" }
+            },
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "repulse" },
+                    onClick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { quantity: 4 }
+                }
+            },
+            particles: {
+                color: { value: "#ffffff" },
+                links: {
+                    color: "#ffffff",
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.5,
+                    width: 1
+                },
+                collisions: { enable: true },
+                move: {
+                    directions: "none",
+                    enable: true,
+                    outModes: { default: "bounce" },
+                    random: false,
+                    speed: 2,
+                    straight: false
+                },
+                number: {
+                    density: { enable: true, area: 800 },
+                    value: 80
+                },
+                opacity: { value: 0.5 },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 5 } }
+            },
+            detectRetina: true
+        });
+    </script>
 </body>
 </html>
