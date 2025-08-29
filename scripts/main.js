@@ -1,57 +1,44 @@
-// 登录逻辑
-const loginBtn = document.getElementById('login-btn');
-const modal = document.getElementById('login-modal');
-const closeBtn = modal.querySelector('.close');
-const loginSubmit = document.getElementById('login-submit');
-const loginMsg = document.getElementById('login-msg');
-
-let currentUser = null;
-
-loginBtn.onclick = () => modal.style.display = 'flex';
-closeBtn.onclick = () => modal.style.display = 'none';
-
-loginSubmit.onclick = () => {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  // 简单示例
-  if(username === 'YiBoho' && password === 'admin') {
-    currentUser = username;
-    loginMsg.textContent = '登录成功！';
-    modal.style.display = 'none';
-    alert('欢迎，管理员！');
-  } else {
-    loginMsg.textContent = '用户名或密码错误';
-  }
-};
-
-// 关于我页面访问控制示例
-function checkImportantAccess() {
-  if(currentUser !== 'YiBoho') {
-    document.querySelectorAll('.important-person').forEach(el => {
-      el.textContent = '请登录后查看';
-    });
-  }
-}
-
-// 粒子初始化
-particlesJS('particles-js', {
-  particles: {
-    number: { value: 80 },
-    color: { value: "#ffffff" },
-    shape: { type: "circle" },
-    opacity: { value: 0.5 },
-    size: { value: 3 },
-    line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-    move: { enable: true, speed: 2, direction: "none", out_mode: "bounce" }
+// 粒子动效
+particlesJS("particles-js", {
+  "particles": {
+    "number": {"value": 80},
+    "color": {"value": "#00ffcc"},
+    "shape": {"type": "circle"},
+    "opacity": {"value": 0.5},
+    "size": {"value": 3},
+    "line_linked": {"enable": true, "distance": 150, "color": "#00ffcc", "opacity":0.4, "width":1},
+    "move": {"enable": true, "speed": 4, "direction": "none", "random": true, "straight": false, "out_mode": "out"}
   },
-  interactivity: {
-    detect_on: "canvas",
-    events: {
-      onhover: { enable: true, mode: "grab" },
-      onclick: { enable: true, mode: "push" }
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {"enable": true, "mode": "grab"},
+      "onclick": {"enable": true, "mode": "push"}
     },
-    modes: { grab: { distance: 150, line_linked: { opacity: 1 } } }
+    "modes": {
+      "grab": {"distance": 140, "line_linked": {"opacity": 1}},
+      "push": {"particles_nb": 4}
+    }
   },
-  retina_detect: true
+  "retina_detect": true
+});
+
+// 登录按钮逻辑
+document.addEventListener("DOMContentLoaded", function(){
+    const loginBtn = document.getElementById("loginBtn");
+    if(loginBtn){
+        loginBtn.addEventListener("click", function(){
+            window.location.href = "login.html";
+        });
+    }
+
+    // About 页面显示重要的人
+    const importantPeople = document.getElementById("importantPeople");
+    const lockedMessage = document.getElementById("lockedMessage");
+    if(importantPeople && lockedMessage){
+        if(localStorage.getItem("loggedInUser")){
+            importantPeople.style.display = "block";
+            lockedMessage.style.display = "none";
+        }
+    }
 });
