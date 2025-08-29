@@ -56,3 +56,9 @@ loginForm.addEventListener("submit", function (e) {
     loginMessage.textContent = "❌ 用户名或密码错误！";
   }
 });
+
+// 登录成功时解锁“重要的人”
+const lockedOverlay = document.getElementById("lockedOverlay");
+if (lockedOverlay) {
+  lockedOverlay.classList.add("hidden");
+}
