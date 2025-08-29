@@ -1,107 +1,25 @@
-/* 全局样式 */
-body, html {
+body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Noto Sans SC', sans-serif;
-  color: white;
-  overflow-x: hidden;
+  font-family: Arial, sans-serif;
   background: #0d0d0d; /* 深色背景 */
+  color: white;
+  overflow: hidden;
 }
 
-/* 粒子背景容器 */
 #tsparticles {
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -1; /* 在所有元素后面 */
   top: 0;
   left: 0;
 }
 
-/* 导航栏 */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 50px;
-  background: rgba(0,0,0,0.6);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(10px);
-}
-
-.nav-logo {
-  font-weight: 700;
-  font-size: 20px;
-}
-
-.nav-links a {
-  color: white;
-  margin-left: 25px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: #00e0ff;
-}
-
-.login-btn {
-  border: 1px solid #00e0ff;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-
-.login-btn:hover {
-  background: #00e0ff;
-  color: black;
-}
-
-/* Hero 区域 */
-.hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.content {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  padding: 20px;
-}
-
-.hero h1 {
-  font-size: 50px;
-  margin-bottom: 15px;
-  text-shadow: 0px 0px 15px rgba(255,255,255,0.3);
-}
-
-.hero p {
-  font-size: 20px;
-  max-width: 600px;
-  margin-bottom: 30px;
-  line-height: 1.6;
-  color: #cccccc;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 20px;
-}
-
-.cta-button {
-  padding: 12px 24px;
-  border: 2px solid white;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.cta-button:hover {
-  background: white;
-  color: black;
+  margin-top: 20%;
 }
