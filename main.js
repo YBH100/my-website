@@ -6,7 +6,7 @@ tsParticles.load("tsparticles", {
     fpsLimit: 60,
     particles: {
         number: {
-            value: 80, // 粒子数量
+            value: 8000, // 粒子数量
             density: {
                 enable: true,
                 area: 800
@@ -19,10 +19,10 @@ tsParticles.load("tsparticles", {
             type: "circle" // 粒子形状
         },
         opacity: {
-            value: 0.8
+            value: 1
         },
         size: {
-            value: { min: 2, max: 5 }
+            value: { min: 2, max: 100 }
         },
         move: {
             enable: true,
