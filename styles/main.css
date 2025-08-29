@@ -186,3 +186,48 @@ button:hover, .cta-btn:hover {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+/* ===== 重要的人模块 ===== */
+.important-people {
+  position: relative;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  color: #fff;
+}
+
+.people-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.people-content li {
+  padding: 8px 0;
+  font-size: 18px;
+}
+
+/* 模糊遮罩层 */
+.locked-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ddd;
+  font-size: 18px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* 登录后隐藏遮罩 */
+.locked-overlay.hidden {
+  display: none;
+}
