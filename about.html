@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我 | 奕博浩</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-logo">奕博浩</div>
+    <ul class="nav-links">
+      <li><a href="index.html">主页</a></li>
+      <li><a href="about.html" class="active">关于我</a></li>
+      <li><a href="contact.html">联系方式</a></li>
+      <li><a href="#" id="loginBtn">登录</a></li>
+    </ul>
+  </nav>
 
+  <!-- 主体 -->
+  <main class="content">
+    <section class="about-section">
+      <h1>关于我</h1>
+      <p>你好！我是奕博浩，来自苏州的一名九年级学生。我热爱编程、设计和各种与技术相关的事情，希望能通过代码让创意变成现实。</p>
+    </section>
+
+    <!-- 人生中重要的人 -->
+    <section class="important-people">
+      <h2>人生中重要的人</h2>
+      <div class="people-content" id="peopleContent">
+        <ul>
+          <li>母亲：肖一萍</li>
+          <li>妹妹：奕肖雯</li>
+        </ul>
+      </div>
+      <!-- 遮罩层（未登录时显示） -->
+      <div class="locked-overlay" id="lockedOverlay">
+        <p>🔒 请先登录后查看完整内容</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 奕博浩 | 保留所有权利</p>
+    </div>
+  </footer>
+
+  <script src="scripts/auth.js"></script>
+</body>
+</html>
