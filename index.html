@@ -3,37 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>首页 - 个人网站</title>
-  <link rel="stylesheet" href="main.css">
+  <title>奕博浩的个人网站</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="about.html">关于我</a></li>
-        <li><button id="loginBtn">登录</button></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- 粒子背景 -->
+  <div id="particles-js"></div>
 
-  <main>
-    <h1>欢迎来到我的个人网站</h1>
-    <p>这里是首页内容...</p>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="logo">YiBohao</div>
+    <ul class="nav-links">
+      <li><a href="index.html">主页</a></li>
+      <li><a href="about.html">关于我</a></li>
+      <li><a href="contact.html">联系方式</a></li>
+    </ul>
+    <button id="login-btn">登录</button>
+  </nav>
+
+  <!-- 页面内容 -->
+  <main class="content">
+    <h1>欢迎来到我的网站</h1>
+    <p>这里是主页内容，可以介绍你自己或者展示作品。</p>
   </main>
 
-  <!-- 登录模态框 -->
-  <div id="loginModal" class="modal">
+  <!-- 登录弹窗 -->
+  <div id="login-modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>登录</h2>
       <input type="text" id="username" placeholder="用户名">
       <input type="password" id="password" placeholder="密码">
-      <button id="loginSubmit">登录</button>
-      <p id="loginMessage"></p>
+      <button id="login-submit">登录</button>
+      <p id="login-msg"></p>
     </div>
   </div>
 
-  <script src="auth.js"></script>
+  <script src="js/particles.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
