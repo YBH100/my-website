@@ -3,99 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页 - 粒子效果</title>
+    <title>粒子特效示例</title>
     <link rel="stylesheet" href="main.css">
-    <style>
-        /* 页面全屏和背景 */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background: #0d47a1; /* 深蓝色背景 */
-        }
-        /* 粒子容器全屏 */
-        #tsparticles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        /* 页面文字居中 */
-        .content {
-            position: relative;
-            z-index: 10;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    </style>
 </head>
 <body>
+    <!-- 粒子容器 -->
     <div id="tsparticles"></div>
 
-    <div class="content">
-        <h1>欢迎来到我的网站</h1>
-        <p>粒子效果已启用，可与鼠标互动</p>
-    </div>
+    <h1>欢迎来到粒子特效页面</h1>
 
-    <!-- 引入本地 tsparticles -->
     <script src="tsparticles.bundle.min.js"></script>
-    <script>
-        /* 初始化粒子 */
-        tsParticles.load("tsparticles", {
-            background: {
-                color: "#0d47a1"
-            },
-            fpsLimit: 60,
-            interactivity: {
-                events: {
-                    onHover: {
-                        enable: true,
-                        mode: "repulse"
-                    },
-                    onClick: {
-                        enable: true,
-                        mode: "push"
-                    }
-                },
-                modes: {
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
-                    },
-                    push: {
-                        quantity: 4
-                    }
-                }
-            },
-            particles: {
-                color: { value: "#ffffff" },
-                links: {
-                    color: "#ffffff",
-                    distance: 150,
-                    enable: true,
-                    opacity: 0.5,
-                    width: 1
-                },
-                collisions: { enable: true },
-                move: {
-                    direction: "none",
-                    enable: true,
-                    outModes: "bounce",
-                    random: false,
-                    speed: 2,
-                    straight: false
-                },
-                number: { value: 80 },
-                opacity: { value: 0.5 },
-                shape: { type: "circle" },
-                size: { value: { min: 1, max: 5 } }
-            },
-            detectRetina: true
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
