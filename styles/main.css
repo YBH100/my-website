@@ -1,233 +1,83 @@
-/* 字体与全局样式 */
+/* 通用样式 */
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans SC', 'Space Grotesk', sans-serif;
-  color: #fff;
-  background: #0d0d0d;
-  overflow-x: hidden;
 }
 
-/* 粒子背景全屏覆盖 */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 保证在所有内容后面 */
-}
-
-/* ===== 导航栏样式 ===== */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  z-index: 100;
-}
-
-.nav-logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #fff;
-  letter-spacing: 2px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+header nav ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  gap: 15px;
+  background-color: #333;
+  padding: 10px;
 }
 
-.nav-links a {
+header nav ul li a,
+header nav ul li button {
   color: #fff;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #00d4ff;
-}
-
-/* 登录按钮 */
-#loginBtn {
-  padding: 8px 16px;
-  border: 1px solid #00d4ff;
-  border-radius: 6px;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#loginBtn:hover {
-  background: #00d4ff;
-  color: #000;
-}
-
-/* 主内容区域 */
-main {
-  padding: 120px 40px 60px; /* 留出导航栏高度 */
-  text-align: center;
-}
-
-h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-size: 28px;
-  margin: 30px 0 15px;
-}
-
-/* 各页面的个性化 */
-.about-main p,
-.contact-main p {
-  font-size: 18px;
-  line-height: 1.8;
-}
-
-.important-people ul {
-  list-style: none;
-  padding: 0;
-  font-size: 18px;
-}
-
-.important-people li {
-  margin: 5px 0;
-}
-
-/* 按钮样式（主页登录按钮、可能的CTA） */
-button, .cta-btn {
-  padding: 10px 18px;
+  background: none;
   border: none;
-  border-radius: 6px;
-  background: #00d4ff;
-  color: #0d0d0d;
   cursor: pointer;
   font-size: 16px;
-  transition: transform 0.2s, background 0.3s;
 }
 
-button:hover, .cta-btn:hover {
-  transform: scale(1.05);
-  background: #00aacc;
+header nav ul li button:hover,
+header nav ul li a:hover {
+  color: #00ff99;
 }
 
 /* 登录模态框 */
 .modal {
-  display: none; /* 默认隐藏 */
+  display: none;
   position: fixed;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  align-items: center;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
 }
 
 .modal-content {
-  background: #1e1e1e;
-  padding: 30px;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 300px;
   border-radius: 10px;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
-  animation: fadeIn 0.3s ease;
+  position: relative;
 }
 
-.modal-content h2 {
-  margin-bottom: 20px;
-}
-
-.modal-content label {
-  display: block;
-  text-align: left;
-  margin: 10px 0 5px;
-}
-
-.modal-content input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  margin-bottom: 15px;
-  background: #333;
-  color: #fff;
-}
-
-.close-btn {
-  float: right;
-  font-size: 22px;
+.modal .close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
   cursor: pointer;
 }
 
-#login-message {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #ff4d4d;
-}
-
-@keyframes fadeIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* ===== 重要的人模块 ===== */
-.important-people {
-  position: relative;
-  margin: 50px auto;
-  padding: 20px;
-  max-width: 700px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  color: #fff;
-}
-
-.people-content ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.people-content li {
-  padding: 8px 0;
-  font-size: 18px;
-}
-
-/* 模糊遮罩层 */
-.locked-overlay {
+/* 锁住内容 */
+.locked {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
+  background-color: rgba(200,200,200,0.8);
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: #ddd;
-  font-size: 18px;
-  border-radius: 12px;
-  text-align: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #333;
+  z-index: 10;
 }
 
-/* 登录后隐藏遮罩 */
-.locked-overlay.hidden {
+.hidden {
   display: none;
+}
+
+#importantPeople {
+  position: relative;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
 }
