@@ -1,22 +1,42 @@
-const loginForm = document.getElementById('loginForm');
-const loginMsg = document.getElementById('loginMsg');
+// 登录模态框逻辑
+const loginModal = document.getElementById("loginModal");
+const loginBtn = document.getElementById("loginBtn");
+const closeBtn = document.querySelector(".close-btn");
+const loginForm = document.getElementById("loginForm");
+const loginMessage = document.getElementById("login-message");
 
-const users = {
-    'YiBoho': '123456'  // 管理员账号
-};
+if (loginBtn) {
+  loginBtn.addEventListener("click", () => {
+    loginModal.style.display = "flex";
+  });
+}
 
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    loginModal.style.display = "none";
+  });
+}
 
-    if (users[username] && users[username] === password) {
-        loginMsg.style.color = 'green';
-        loginMsg.textContent = '登录成功！';
-        localStorage.setItem('loggedUser', username);
-        loginModal.style.display = 'none';
-    } else {
-        loginMsg.style.color = 'red';
-        loginMsg.textContent = '用户名或密码错误！';
-    }
+window.addEventListener("click", (e) => {
+  if (e.target === loginModal) {
+    loginModal.style.display = "none";
+  }
+});
+
+// 登录验证逻辑
+loginForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (username === "YiBoho" && password === "123456") {
+    loginMessage.style.color = "#00ff99";
+    loginMessage.textContent = "✅ 登录成功！欢迎管理员。";
+    setTimeout(() => {
+      loginModal.style.display = "none";
+    }, 1500);
+  } else {
+    loginMessage.style.color = "#ff4d4d";
+    loginMessage.textContent = "❌ 用户名或密码错误！";
+  }
 });
