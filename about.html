@@ -1,51 +1,43 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关于我 - 个人网站</title>
-  <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 奕博浩的网站</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="about.html">关于我</a></li>
-        <li><button id="loginBtn">登录</button></li>
-      </ul>
-    </nav>
-  </header>
+    <canvas id="particles-js"></canvas>
+    <header>
+        <nav>
+            <a href="index.html">主页</a>
+            <a href="about.html">关于我</a>
+            <a href="contact.html">联系方式</a>
+            <button id="loginBtn">登录</button>
+        </nav>
+    </header>
 
-  <main>
-    <h1>关于我</h1>
-    <p>这里可以看到普通内容。</p>
+    <main>
+        <h1>关于我</h1>
+        <p>姓名：奕博浩</p>
+        <p>出生日期：2010.3.16</p>
+        <p>学校：苏州工业园区景城学校</p>
 
-    <!-- 重要的人内容 -->
-    <div id="importantPeople">
-      <div id="lockedOverlay" class="locked">
-        🔒 请先登录查看
-      </div>
-      <ul>
-        <li>家人：爸爸、妈妈、妹妹</li>
-        <li>青梅好友</li>
-        <li>其他重要人物</li>
-      </ul>
-    </div>
-  </main>
+        <div id="importantPeopleSection">
+            <h2>人生中重要的人</h2>
+            <p id="lockedMessage">请登录查看此内容</p>
+            <div id="importantPeople" style="display:none;">
+                <ul>
+                    <li>妈妈：肖一萍</li>
+                    <li>妹妹：奕肖雯</li>
+                    <li>其他重要的人...</li>
+                </ul>
+            </div>
+        </div>
+    </main>
 
-  <!-- 登录模态框 -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>登录</h2>
-      <input type="text" id="username" placeholder="用户名">
-      <input type="password" id="password" placeholder="密码">
-      <button id="loginSubmit">登录</button>
-      <p id="loginMessage"></p>
-    </div>
-  </div>
-
-  <script src="auth.js"></script>
+    <script src="particles.min.js"></script>
+    <script src="users.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
