@@ -1,55 +1,82 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主页 - 奕博浩的网站</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奕博浩 | 创意开发者</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="icon" href="favicon.ico">
+
+  <!-- 字体 & 图标 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <canvas id="particles-js"></canvas>
-    <header>
-        <nav>
-            <a href="index.html">主页</a>
-            <a href="about.html">关于我</a>
-            <a href="contact.html">联系方式</a>
-            <button id="loginBtn">登录</button>
-        </nav>
-    </header>
+  <!-- 粒子背景容器 -->
+  <div id="tsparticles"></div>
 
-    <main>
-        <h1>欢迎来到奕博浩的网站</h1>
-        <p>这是一个炫酷又优雅的个人网站。</p>
-    </main>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-logo">奕博浩</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">首页</a></li>
+      <li><a href="about.html">关于我</a></li>
+      <li><a href="contact.html">联系方式</a></li>
+      <li><a href="#" id="loginBtn">登录</a></li>
+    </ul>
+  </nav>
 
-    <script src="particles.min.js"></script>
-    <script src="main.js"></script>
-    <!-- 引入 tsParticles -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.10.1/tsparticles.min.js"></script>
+  <!-- 首页内容 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>用代码<span class="typing-text"></span></h1>
+      <p>你好，我是奕博浩，来自苏州的九年级学生。我热爱编程、设计和一切与技术相关的事物，通过代码将创意转化为现实。</p>
+      <div class="cta-buttons">
+        <a href="about.html" class="cta-button"><i class="fas fa-user"></i> 关于我</a>
+        <a href="contact.html" class="cta-button secondary"><i class="fas fa-paper-plane"></i> 联系我</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- 初始化粒子 -->
-    <script>
-      tsParticles.load("tsparticles", {
-        fullScreen: { enable: true, zIndex: -1 }, // 背景层，不挡内容
-        particles: {
-        number: { value: 80 },
+  <!-- 页脚 -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 奕博浩. 保留所有权利 | 苏州工业园区景城学校</p>
+    </div>
+  </footer>
+
+  <!-- 脚本 -->
+  <script src="scripts/main.js"></script>
+
+  <!-- tsParticles 库 -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.10.1/tsparticles.min.js"></script>
+
+  <!-- 初始化粒子效果 -->
+  <script>
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: true, zIndex: -1 },
+      particles: {
+        number: { value: 90 },
         color: { value: "#ffffff" },
         shape: { type: "circle" },
         opacity: { value: 0.5 },
-        size: { value: { min: 1, max: 3 } },
+        size: { value: { min: 1, max: 4 } },
         links: { enable: true, distance: 120, color: "#ffffff", opacity: 0.4, width: 1 },
-       move: { enable: true, speed: 2, direction: "none", random: false, straight: false, outMode: "out" }
+        move: { enable: true, speed: 2 }
       },
-    interactivity: {
-      events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: true, mode: "push" } },
-      modes: { repulse: { distance: 100 }, push: { quantity: 4 } }
-    },
-    detectRetina: true
-  });
-</script>
-
-<!-- 粒子容器 -->
-<div id="tsparticles"></div>
-
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { quantity: 4 }
+        }
+      },
+      detectRetina: true
+    });
+  </script>
 </body>
 </html>
