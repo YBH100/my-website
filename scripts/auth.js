@@ -5,12 +5,25 @@ const closeBtn = document.querySelector(".close-btn");
 const loginForm = document.getElementById("loginForm");
 const loginMessage = document.getElementById("login-message");
 
+let isLoggedIn = false;
+
+// 打开模态框
 if (loginBtn) {
-  loginBtn.addEventListener("click", () => {
-    loginModal.style.display = "flex";
+  loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!isLoggedIn) {
+      loginModal.style.display = "flex";
+    } else {
+      // 如果已经登录，点击就是注销
+      isLoggedIn = false;
+      loginBtn.textContent = "登录";
+      alert("您已退出登录");
+    }
   });
 }
 
+// 关闭模态框
 if (closeBtn) {
   closeBtn.addEventListener("click", () => {
     loginModal.style.display = "none";
@@ -30,11 +43,14 @@ loginForm.addEventListener("submit", function (e) {
   const password = document.getElementById("password").value.trim();
 
   if (username === "YiBoho" && password === "123456") {
+    isLoggedIn = true;
     loginMessage.style.color = "#00ff99";
     loginMessage.textContent = "✅ 登录成功！欢迎管理员。";
+
     setTimeout(() => {
       loginModal.style.display = "none";
-    }, 1500);
+      loginBtn.textContent = "YiBoho | 注销"; // 登录后按钮改成用户名
+    }, 1000);
   } else {
     loginMessage.style.color = "#ff4d4d";
     loginMessage.textContent = "❌ 用户名或密码错误！";
