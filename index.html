@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主页 - 奕博浩的网站</title>
     <link rel="stylesheet" href="main.css">
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.10.1/tsparticles.min.js"></script>
 </head>
 <body>
     <canvas id="particles-js"></canvas>
@@ -25,5 +24,32 @@
 
     <script src="particles.min.js"></script>
     <script src="main.js"></script>
+    <!-- 引入 tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.10.1/tsparticles.min.js"></script>
+
+    <!-- 初始化粒子 -->
+    <script>
+      tsParticles.load("tsparticles", {
+        fullScreen: { enable: true, zIndex: -1 }, // 背景层，不挡内容
+        particles: {
+        number: { value: 80 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: { min: 1, max: 3 } },
+        links: { enable: true, distance: 120, color: "#ffffff", opacity: 0.4, width: 1 },
+       move: { enable: true, speed: 2, direction: "none", random: false, straight: false, outMode: "out" }
+      },
+    interactivity: {
+      events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: true, mode: "push" } },
+      modes: { repulse: { distance: 100 }, push: { quantity: 4 } }
+    },
+    detectRetina: true
+  });
+</script>
+
+<!-- 粒子容器 -->
+<div id="tsparticles"></div>
+
 </body>
 </html>
