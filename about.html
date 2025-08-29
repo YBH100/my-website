@@ -3,54 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>关于我 | 奕博浩</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/components.css">
-  <link rel="icon" href="favicon.ico">
-  <script src="auth.js"></script>
+  <title>关于我 - 个人网站</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <!-- 导航栏 -->
-  <nav class="navbar">
-    <div class="nav-logo">奕博浩</div>
-    <ul class="nav-links">
-      <li><a href="index.html">主页</a></li>
-      <li><a href="about.html" class="active">关于我</a></li>
-      <li><a href="contact.html">联系方式</a></li>
-      <li><a href="#" id="loginBtn">登录</a></li>
-    </ul>
-  </nav>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于我</a></li>
+        <li><button id="loginBtn">登录</button></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- 主体 -->
-  <main class="content">
-    <section class="about-section">
-      <h1>关于我</h1>
-      <p>你好！我是奕博浩，来自苏州的一名九年级学生。我热爱编程、设计和各种与技术相关的事情，希望能通过代码让创意变成现实。</p>
-    </section>
+  <main>
+    <h1>关于我</h1>
+    <p>这里可以看到普通内容。</p>
 
-    <!-- 人生中重要的人 -->
-    <section class="important-people">
-      <h2>人生中重要的人</h2>
-      <div class="people-content" id="peopleContent">
-        <ul>
-          <li>母亲：肖一萍</li>
-          <li>妹妹：奕肖雯</li>
-        </ul>
+    <!-- 重要的人内容 -->
+    <div id="importantPeople">
+      <div id="lockedOverlay" class="locked">
+        🔒 请先登录查看
       </div>
-      <!-- 遮罩层（未登录时显示） -->
-      <div class="locked-overlay" id="lockedOverlay">
-        <p>🔒 请先登录后查看完整内容</p>
-      </div>
-    </section>
+      <ul>
+        <li>家人：爸爸、妈妈、妹妹</li>
+        <li>青梅好友</li>
+        <li>其他重要人物</li>
+      </ul>
+    </div>
   </main>
 
-  <!-- 页脚 -->
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 奕博浩 | 保留所有权利</p>
+  <!-- 登录模态框 -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>登录</h2>
+      <input type="text" id="username" placeholder="用户名">
+      <input type="password" id="password" placeholder="密码">
+      <button id="loginSubmit">登录</button>
+      <p id="loginMessage"></p>
     </div>
-  </footer>
+  </div>
 
-  <script src="scripts/auth.js"></script>
+  <script src="auth.js"></script>
 </body>
 </html>
